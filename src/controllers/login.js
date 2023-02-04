@@ -1,3 +1,5 @@
+const { User } = require("../schemas");
+
 async function login(req, res) {
   if (!req.body) {
     return res.status(400).json({ error: "Please send a valid request body" });

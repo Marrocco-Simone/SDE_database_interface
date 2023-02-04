@@ -1,3 +1,5 @@
+const { Content } = require("../schemas");
+
 async function generateNewContent(req, res) {
   if (!req.body) {
     return res.status(400).json({ error: "Please send a valid request body" });
