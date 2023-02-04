@@ -1,12 +1,10 @@
 require("dotenv").config();
 const express = require("express");
 const { connect } = require("mongoose");
-const { faker } = require("@faker-js/faker");
 const cors = require("cors");
 
-const { Content, User } = require("./schemas");
-const { authenticateToken } = require("./middleware/authenticateToken");
 const { requestLogger } = require("./middleware/requestLogger");
+const { authenticateToken } = require("./middleware/authenticateToken");
 const { serverOnline } = require("./controllers/serverOnline");
 const { login } = require("./controllers/login");
 const { generateNewContent } = require("./controllers/generateNewContent");
@@ -31,25 +29,4 @@ app.post("/db/update/:content_id", authenticateToken, updateContent);
 app.listen(port, async () => {
   await connect(mongoDbUrl);
   console.log(`Listening on port http://localhost:${port}`);
-});
-
-// ! TESTING
-
-app.get("/db/newuser", async (req, res) => {
-  const newUser = new User({
-    email: faker.internet.email(),
-    password: faker.internet.password(),
-  });
-  await newUser.save();
-
-  res.json(newUser);
-});
-
-app.get("/db/fakecontent", (req, res) => {
-  const fakeContent = {
-    content_text: faker.lorem.paragraph(),
-    title: faker.animal.cat(),
-  };
-  faker.image.animals;
-  res.json(fakeContent);
 });
