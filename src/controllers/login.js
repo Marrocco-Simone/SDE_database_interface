@@ -1,4 +1,7 @@
+const jwt = require('jsonwebtoken');
 const { User } = require("../schemas");
+
+const jwtSecret = process.env.JWTSECRET;
 
 async function login(req, res) {
   if (!req.body) {
