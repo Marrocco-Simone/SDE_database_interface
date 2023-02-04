@@ -1,8 +1,10 @@
 require("dotenv").config();
-const { connect, disconnect, Types } = require("mongoose");
+const mongoose = require("mongoose");
 const fetch = require("node-fetch");
 const { faker } = require("@faker-js/faker");
 const { User, Content } = require("../src/schemas");
+mongoose.set("strictQuery", true);
+const { connect, disconnect, Types } = mongoose;
 
 const port = 3000;
 const url = `http://localhost:${port}/db`;

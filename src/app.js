@@ -1,15 +1,17 @@
 require("dotenv").config();
 const express = require("express");
-const { connect } = require("mongoose");
+const mongoose = require("mongoose");
 const cors = require("cors");
+mongoose.set("strictQuery", true);
 
-const { requestLogger } = require("./middleware/requestLogger");
-const { authenticateToken } = require("./middleware/authenticateToken");
-const { serverOnline } = require("./controllers/serverOnline");
-const { login } = require("./controllers/login");
-const { generateNewContent } = require("./controllers/generateNewContent");
-const { getUserContent } = require("./controllers/getUserContent");
-const { updateContent } = require("./controllers/updateContent");
+const { requestLogger, authenticateToken } = require("./middleware");
+const {
+  serverOnline,
+  login,
+  generateNewContent,
+  getUserContent,
+  updateContent,
+} = require("./controllers");
 
 const app = express();
 const port = 3000;
@@ -27,6 +29,6 @@ app.get("/db/get", authenticateToken, getUserContent);
 app.post("/db/update/:content_id", authenticateToken, updateContent);
 
 app.listen(port, async () => {
-  await connect(mongoDbUrl);
+  await mongoose.connect(mongoDbUrl);
   console.log(`Listening on port http://localhost:${port}`);
 });
