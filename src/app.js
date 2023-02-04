@@ -16,7 +16,6 @@ const { updateContent } = require("./controllers/updateContent");
 const app = express();
 const port = 3000;
 const mongoDbUrl = process.env.MONGODBURL;
-const jwtSecret = process.env.JWTSECRET;
 
 app.use(cors({ origin: "*" }));
 app.use(express.json());
