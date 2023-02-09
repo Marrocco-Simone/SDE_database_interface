@@ -28,7 +28,7 @@ app.post("/db/login", login);
 app.get("/db/login", authenticateToken, sendTokenUser);
 app.put("/db/generate", authenticateToken, generateNewContent);
 app.get("/db/get", authenticateToken, getUserContent);
-app.post("/db/update/:content_id", authenticateToken, updateContent);
+app.put("/db/update/:contentId", authenticateToken, updateContent);
 
 app.listen(port, async () => {
   await mongoose.connect(mongoDbUrl);
