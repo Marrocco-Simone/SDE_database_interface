@@ -10,13 +10,13 @@ const port = 3000;
 const url = `http://localhost:${port}/db`;
 const mongoDbUrl = process.env.MONGODBURL;
 
-/** 
+/**
  * @type {{
-* email: String,
-* password: String,
-* _id: Types.ObjectId
-* }} 
-*/
+ * email: String,
+ * password: String,
+ * _id: Types.ObjectId
+ * }}
+ */
 let testUser;
 
 const getnewUser = () => {
@@ -65,6 +65,19 @@ test("API working", async () => {
 
   const token = res_login_json.token;
 
+  // * VERIFY TOKEN
+  const res_verify = await fetch(`${url}/login`, {
+    method: "GET",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
+  const res_verify_json = await res_verify.json();
+
+  expect(res_verify.status).toBe(200);
+  expect(res_verify_json._id).toEqual(testUser.id.toString());
+  expect(res_verify_json.email).toEqual(testUser.email);
+
   // * INSERT CONTENT
   const content1 = getnewContent();
   const res_generate1 = await fetch(`${url}/generate`, {
@@ -103,7 +116,7 @@ test("API working", async () => {
     method: "GET",
     headers: {
       Authorization: "Bearer " + token,
-    }
+    },
   });
   const res_get_json = await res_get.json();
 

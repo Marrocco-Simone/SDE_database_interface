@@ -8,6 +8,7 @@ const { requestLogger, authenticateToken } = require("./middleware");
 const {
   serverOnline,
   login,
+  sendTokenUser,
   generateNewContent,
   getUserContent,
   updateContent,
@@ -24,6 +25,7 @@ app.use(requestLogger);
 app.get("/", serverOnline);
 app.get("/db", serverOnline);
 app.post("/db/login", login);
+app.get("/db/login", authenticateToken, sendTokenUser);
 app.put("/db/generate", authenticateToken, generateNewContent);
 app.get("/db/get", authenticateToken, getUserContent);
 app.post("/db/update/:content_id", authenticateToken, updateContent);
