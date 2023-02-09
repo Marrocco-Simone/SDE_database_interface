@@ -1,5 +1,10 @@
 function sendTokenUser(req, res) {
-  res.send(req.user);
+  try {
+    res.send(req.user);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({ error: "Internal Server Error" });
+  }
 }
 
 module.exports = { sendTokenUser };
