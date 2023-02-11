@@ -1,9 +1,3 @@
-require("dotenv").config();
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-mongoose.set("strictQuery", true);
-
 const { requestLogger, authenticateToken } = require("./middleware");
 const {
   serverOnline,
@@ -14,9 +8,10 @@ const {
   updateContent,
 } = require("./controllers");
 
+const express = require("express");
+const cors = require("cors");
+
 const app = express();
-const port = 3000;
-const mongoDbUrl = process.env.MONGODBURL;
 
 app.use(cors({ origin: "*" }));
 app.use(express.json());
@@ -30,7 +25,4 @@ app.put("/db/generate", authenticateToken, generateNewContent);
 app.get("/db/get", authenticateToken, getUserContent);
 app.put("/db/update/:contentId", authenticateToken, updateContent);
 
-app.listen(port, async () => {
-  await mongoose.connect(mongoDbUrl);
-  console.log(`Listening on port http://localhost:${port}`);
-});
+module.exports = { app };

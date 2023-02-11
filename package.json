@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/app.js",
-    "start-dev": "nodemon src/app.js",
-    "test": "jest --runInBand"
+    "start": "node src/start.js",
+    "start-dev": "nodemon src/start.js",
+    "test": "jest --runInBand --coverage"
   },
   "keywords": [],
   "author": "",
