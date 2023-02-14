@@ -1,7 +1,8 @@
 require("dotenv").config();
 const mongoose = require("mongoose");
 const fetch = require("node-fetch");
-const { app } = require("../src/app");
+const express = require("express");
+const { router } = require("../src/router");
 const { User, Content } = require("../src/schemas");
 mongoose.set("strictQuery", true);
 const { connect, disconnect, Types } = mongoose;
@@ -12,7 +13,7 @@ const {
 } = require("./fakeDataFunctions");
 
 const port = process.env.TESTING_PORT ?? 2499;
-const url = `http://localhost:${port}/db`;
+const url = `http://localhost:${port}`;
 const mongoDbUrl = process.env.MONGODBURL;
 
 /**
@@ -29,7 +30,9 @@ beforeAll(async () => {
   await connect(mongoDbUrl);
   testUser = new User(getnewUser());
   await testUser.save();
-  server = app.listen(port)
+  const app = express();
+  app.use("/", router);
+  server = app.listen(port);
 });
 
 afterAll(async () => {
