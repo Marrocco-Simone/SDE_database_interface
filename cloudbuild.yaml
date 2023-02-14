@@ -14,7 +14,3 @@ steps:
 - name: 'node'
   entrypoint: 'npm'
   args: ['run', 'test']
-  
-- name: 'node'
-  entrypoint: 'npm'
-  args: ['start']
