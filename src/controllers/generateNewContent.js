@@ -24,7 +24,7 @@ async function generateNewContent(req, res) {
     });
     await newContent.save();
 
-    res.json(newContent);
+    res.json(newContent.toObject());
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: "Internal Server Error" });

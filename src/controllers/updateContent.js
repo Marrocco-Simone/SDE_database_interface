@@ -31,7 +31,7 @@ async function updateContent(req, res) {
 
     await content.save();
 
-    res.send(content);
+    res.send(content.toObject());
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: "Internal Server Error" });
