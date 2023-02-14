@@ -9,6 +9,7 @@ steps:
   env:
     - 'MONGODBURL=${_MONGODBURL}'
     - 'MONGODBURLTEST=${_MONGODBURL}'
+    - 'JWTSECRET=${_JWTSECRET}'
 
 - name: 'node'
   entrypoint: 'npm'
