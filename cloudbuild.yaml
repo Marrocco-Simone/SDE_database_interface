@@ -1,9 +1,9 @@
 steps:
-- name: 'grc.io/cloud-builders/npm'
+- name: 'node'
   args: ['install']
 
-- name: 'grc.io/cloud-builders/npm'
+- name: 'node'
   args: ['run', 'test']
   
-- name: 'grc.io/cloud-builders/npm'
+- name: 'node'
   args: ['start']
