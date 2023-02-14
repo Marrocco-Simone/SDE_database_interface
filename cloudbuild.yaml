@@ -5,6 +5,13 @@ steps:
 
 - name: 'node'
   entrypoint: 'npm'
+  args: ["run", "create-env"]
+  env:
+    - 'MONGODBURL=${_MONGODBURL}'
+    - 'MONGODBURLTEST=${_MONGODBURL}'
+
+- name: 'node'
+  entrypoint: 'npm'
   args: ['run', 'test']
   
 - name: 'node'
