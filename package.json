@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node src/start.js",
     "start-dev": "nodemon src/start.js",
-    "test": "jest --runInBand --coverage"
+    "test": "jest --runInBand --coverage",
+    "create-env": "printenv > .env"
   },
   "keywords": [],
   "author": "",
