@@ -15,7 +15,7 @@ mongoose.connect(mongoDbUrl).then(() => console.log(`Connected to database`));
 const app = express();
 
 app.use(requestLogger);
-app.use(cors({ origin: "*" }));
+app.use(cors({ origin: true }));
 app.use("/db", router);
 app.get("/", serverOnline);
 
