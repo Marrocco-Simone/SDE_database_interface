@@ -14,7 +14,7 @@ const {
 
 const port = process.env.TESTING_PORT ?? 2499;
 const url = `http://localhost:${port}`;
-const mongoDbUrl = process.env.MONGODBURL;
+const mongoDbUrl = process.env.MONGODBURLTEST;
 
 /**
  * @type {{
