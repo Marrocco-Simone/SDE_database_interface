@@ -16,6 +16,6 @@ steps:
   args: ['run', 'test']
 
 - name: 'gcr.io/$PROJECT_ID/data-service'
-  args: [ 'build', '-t', '$PROJECT_ID/data-service', '.' ]
+  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/data-service:latest', '.' ]
 images:
-- '$PROJECT_ID/data-service'
+- 'gcr.io/$PROJECT_ID/data-service:latest'
