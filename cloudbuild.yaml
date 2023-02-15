@@ -17,7 +17,7 @@ steps:
 
 # europe-docker.pkg.dev/sdeservices/eu.gcr.io
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'europe-west8-docker.pkg.dev/sdeservices/sde-services-docker', '.' ]
+  args: [ 'build', '-t', 'europe-west8-docker.pkg.dev/sdeservices/sde-services-docker:latest', '.' ]
 images:
-- 'europe-west8-docker.pkg.dev/sdeservices/sde-services-docker'
+- 'europe-west8-docker.pkg.dev/sdeservices/sde-services-docker:latest'
 
