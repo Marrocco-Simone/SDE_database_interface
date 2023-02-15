@@ -11,11 +11,6 @@ steps:
     - 'MONGODBURLTEST=${_MONGODBURL}'
     - 'JWTSECRET=${_JWTSECRET}'
 
-- name: node
-  args: ['run', 'artifactregistry-login']
-- name: node
-  args: ['publish', '${_PACKAGE}']
-
 - name: 'node'
   entrypoint: 'npm'
   args: ['run', 'test']
