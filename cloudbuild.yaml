@@ -15,7 +15,9 @@ steps:
   entrypoint: 'npm'
   args: ['run', 'test']
 
-- name: 'gcr.io/$PROJECT_ID/data-service'
-  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/data-service:latest', '.' ]
+# europe-docker.pkg.dev/sdeservices/eu.gcr.io
+- name: 'gcr.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'europe-docker.pkg.dev/$PROJECT_ID/sdeservices/latest', '.' ]
 images:
-- 'gcr.io/$PROJECT_ID/data-service:latest'
+- 'europe-docker.pkg.dev/$PROJECT_ID/sdeservices/latest'
+
