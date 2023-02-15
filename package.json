@@ -7,7 +7,8 @@
     "start": "node src/start.js",
     "start-dev": "nodemon src/start.js",
     "test": "jest --runInBand --coverage",
-    "create-env": "printenv > .env"
+    "create-env": "printenv > .env",
+    "artifactregistry-login": "npx google-artifactregistry-auth"
   },
   "keywords": [],
   "author": "",
