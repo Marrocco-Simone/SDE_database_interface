@@ -66,7 +66,7 @@ test("API working", async () => {
   const res_verify = await fetch(`${url}/login`, {
     method: "GET",
     headers: {
-      Authorization: "Bearer " + token,
+      Authorization: `Bearer ${token}`,
     },
   });
   const res_verify_json = await res_verify.json();
@@ -81,7 +81,7 @@ test("API working", async () => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(content1),
   });
@@ -97,7 +97,7 @@ test("API working", async () => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(content2),
   });
@@ -112,7 +112,7 @@ test("API working", async () => {
   const res_get = await fetch(`${url}/get`, {
     method: "GET",
     headers: {
-      Authorization: "Bearer " + token,
+      Authorization: `Bearer ${token}`,
     },
   });
   const res_get_json = await res_get.json();
@@ -126,7 +126,7 @@ test("API working", async () => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(update_body),
   });
