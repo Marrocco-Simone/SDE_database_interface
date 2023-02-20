@@ -1,11 +1,11 @@
 steps:
+# install dependencies
 - name: 'node'
-  description: 'install dependencies'
   entrypoint: 'npm'
   args: ['install', '--only-production']
 
+# create the .env file
 - name: 'node'
-  description: 'create the .env file'
   entrypoint: 'npm'
   # this command must be created on the package.json file
   args: ["run", "create-env"]
@@ -15,20 +15,20 @@ steps:
     - 'MONGODBURLTEST=${_MONGODBURLTEST}'
     - 'JWTSECRET=${_JWTSECRET}'
 
+# test the app
 - name: 'node'
-  description: 'test the app'
   entrypoint: 'npm'
   args: ['run', 'test']
 
+# create the docker image from the Dockerfile
 - name: 'gcr.io/cloud-builders/docker'
-  description: 'create the docker image from the Dockerfile'
   # third parameter is ${SERVER_LOCATION}-docker.pkg.dev/${PROJECT_NAME}/${ARTIFACT_REPOSITORY_NAME}/${DOCKER_IMAGE_NAME}
   # you can find it in the Artifact Registry page
   # ${DOCKER_IMAGE_NAME} can be a new one
   args: [ 'build', '-t', 'europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-service', '.' ]
 
+# save docker image to Artifact Registry
 - name: 'gcr.io/cloud-builders/docker'
-  description: 'save docker image to Artifact Registry'
   # same docker image name as before
   args: ['push', 'europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-service']
 
