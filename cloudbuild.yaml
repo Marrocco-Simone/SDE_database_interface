@@ -26,6 +26,6 @@ steps:
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'sdeservices', '--image', 'europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-service', '--region', 'europe-west8', '--platform', 'managed']
+  args: ['run', 'deploy', 'data-service', '--image', 'europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-service', '--region', 'europe-west8', '--platform', 'managed']
 
 images: ['europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-service']
