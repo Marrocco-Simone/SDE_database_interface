@@ -1,5 +1,3 @@
-images: ['europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-service']
-
 steps:
 - name: 'node'
   entrypoint: 'npm'
@@ -19,10 +17,15 @@ steps:
 
 # save docker image to Artifact Registry
 - name: 'gcr.io/cloud-builders/docker'
-  args: [ 'build', '-t', 'europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-se rvice', '.' ]
+  args: [ 'build', '-t', 'europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-service', '.' ]
+#images: ['europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-service']
+
+#- name: 'gcr.io/cloud-builders/docker'
+#  args: ['push', 'europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-service']
 
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
   args: ['run', 'deploy', 'sdeservices', '--image', 'europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-service', '--region', 'europe-west8', '--platform', 'managed']
 
+images: ['europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-service']
