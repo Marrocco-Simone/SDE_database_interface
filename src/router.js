@@ -9,9 +9,8 @@ const {
 } = require("./controllers");
 
 const express = require("express");
-
 const router = express.Router();
-router.use(express.json());
+router.use(express.json({limit: '16mb'}));
 
 router.get("/", serverOnline);
 router.post("/login", login);

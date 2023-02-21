@@ -8,9 +8,9 @@ async function generateNewContent(req, res) {
         .json({ error: "Please send a valid request body" });
     }
 
-    const { title, content_text } = req.body;
+    const { title, content_text, img_b64 } = req.body;
 
-    if (!title || !content_text) {
+    if (!title || !content_text || !img_b64) {
       return res
         .status(400)
         .json({ error: "Please send all the required fields" });
@@ -19,12 +19,13 @@ async function generateNewContent(req, res) {
     const newContent = new Content({
       title,
       content_text,
+      img_b64,
       user: req.user._id,
       created_at: new Date(),
     });
     await newContent.save();
 
-    res.json(newContent.toObject());
+    res.json({ ...newContent.toObject(), img_b64: "OK" });
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: "Internal Server Error" });

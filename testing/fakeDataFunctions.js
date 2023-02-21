@@ -11,6 +11,7 @@ const getnewContent = () => {
   return {
     content_text: faker.lorem.paragraph(),
     title: faker.animal.cat(),
+    img_b64: 'myimage'
   };
 };
 
