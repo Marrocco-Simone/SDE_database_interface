@@ -77,7 +77,7 @@ test("API working", async () => {
 
   // * INSERT CONTENT
   const content1 = getnewContent();
-  const res_generate1 = await fetch(`${url}/generate`, {
+  const res_generate1 = await fetch(`${url}/store`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -94,7 +94,7 @@ test("API working", async () => {
   expect(res_generate_json1.img_b64).toEqual("OK");
 
   const content2 = getnewContent();
-  const res_generate2 = await fetch(`${url}/generate`, {
+  const res_generate2 = await fetch(`${url}/store`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

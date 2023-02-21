@@ -15,7 +15,7 @@ router.use(express.json({limit: '16mb'}));
 router.get("/", serverOnline);
 router.post("/login", login);
 router.get("/login", authenticateToken, sendTokenUser);
-router.put("/generate", authenticateToken, generateNewContent);
+router.put("/store", authenticateToken, generateNewContent);
 router.get("/get", authenticateToken, getUserContent);
 router.put("/update/:contentId", authenticateToken, updateContent);
 
