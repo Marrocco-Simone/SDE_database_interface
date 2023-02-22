@@ -1,14 +1,10 @@
 const { isValidObjectId } = require("mongoose");
-const { Content, User } = require("../schemas");
+const { Content } = require("../schemas");
 
-async function updateContent(req, res) {
+async function getSingleContent(req, res) {
   try {
     if (!req.body) {
       return res.status(400).send({ error: "Request body not sent" });
-    }
-    const { title, content_text } = req.body;
-    if (!title && !content_text) {
-      return res.status(400).send({ error: "Invalid request body" });
     }
 
     const contentId = req.params.contentId;
@@ -26,16 +22,12 @@ async function updateContent(req, res) {
       return res.status(403).send({ error: "Forbidden" });
     }
 
-    if (title) content.title = title;
-    if (content_text) content.content_text = content_text;
-
-    await content.save();
-
     res.send(content.toObject());
   } catch (err) {
+    console.log('super errore')
     console.error(err);
     res.status(500).send({ error: "Internal Server Error" });
   }
 }
 
-module.exports = { updateContent };
+module.exports = { getSingleContent };
