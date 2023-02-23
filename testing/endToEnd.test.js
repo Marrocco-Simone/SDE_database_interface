@@ -111,7 +111,7 @@ test("API working", async () => {
   expect(res_generate_json2.img_b64).toEqual("OK");
 
   // * GET CONTENT
-  const res_get = await fetch(`${url}/get`, {
+  const res_get = await fetch(`${url}/content`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
@@ -124,7 +124,7 @@ test("API working", async () => {
 
   // * UPDATE CONTENT
   const update_body = getUpdateContentBody();
-  const res_update = await fetch(`${url}/update/${res_get_json[0]._id}`, {
+  const res_update = await fetch(`${url}/content/${res_get_json[0]._id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
