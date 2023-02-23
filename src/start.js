@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const { router } = require("./router");
 const express = require("express");
 const cors = require("cors");
-const { requestLogger } = require("./middleware");
+const { requestLogger, pageNotFound } = require("./middleware");
 const { serverOnline } = require("./controllers");
 
 const port = process.env.SERVER_PORT ?? process.env.PORT ?? 3000;
@@ -18,6 +18,8 @@ app.use(requestLogger);
 app.use(cors({ origin: true }));
 app.use("/db", router);
 app.get("/", serverOnline);
+
+app.use(pageNotFound);
 
 app.listen(port, async () => {
   console.log(`Listening on port http://localhost:${port}`);
