@@ -25,18 +25,18 @@ steps:
   # third parameter is ${SERVER_LOCATION}-docker.pkg.dev/${PROJECT_NAME}/${ARTIFACT_REPOSITORY_NAME}/${DOCKER_IMAGE_NAME}
   # you can find it in the Artifact Registry page
   # ${DOCKER_IMAGE_NAME} can be a new one
-  args: [ 'build', '-t', 'europe-noth1-docker.pkg.dev/sdeservices/sde-services-docker/data-service', '.' ]
+  args: [ 'build', '-t', 'europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-service', '.' ]
 
 # save docker image to Artifact Registry
 - name: 'gcr.io/cloud-builders/docker'
   # same docker image name as before
-  args: ['push', 'europe-noth1-docker.pkg.dev/sdeservices/sde-services-docker/data-service']
+  args: ['push', 'europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-service']
 
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
   # the fifth parameter is the same docker image name as before
   # the third one is the name of the service in the Cloud Run page (it can be a new name)
-  args: ['run', 'deploy', 'data-service', '--image', 'europe-noth1-docker.pkg.dev/sdeservices/sde-services-docker/data-service', '--region', 'europe-noth1', '--platform', 'managed']
+  args: ['run', 'deploy', 'data-service', '--image', 'europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-service', '--region', 'europe-north1', '--platform', 'managed']
 
-images: ['europe-noth1-docker.pkg.dev/sdeservices/sde-services-docker/data-service']
+images: ['europe-west8-docker.pkg.dev/sdeservices/sde-services-docker/data-service']
