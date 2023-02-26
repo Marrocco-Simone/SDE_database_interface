@@ -91,7 +91,7 @@ test("API working", async () => {
   expect(res_generate_json1.user).toEqual(testUser._id.toString());
   expect(res_generate_json1.title).toEqual(content1.title);
   expect(res_generate_json1.content_text).toEqual(content1.content_text);
-  expect(res_generate_json1.img_b64).toEqual("OK");
+  expect(res_generate_json1.img_url).toEqual("OK");
 
   const content2 = getnewContent();
   const res_generate2 = await fetch(`${url}/store`, {
@@ -108,7 +108,7 @@ test("API working", async () => {
   expect(res_generate_json2.user).toEqual(testUser._id.toString());
   expect(res_generate_json2.title).toEqual(content2.title);
   expect(res_generate_json2.content_text).toEqual(content2.content_text);
-  expect(res_generate_json2.img_b64).toEqual("OK");
+  expect(res_generate_json2.img_url).toEqual("OK");
 
   // * GET CONTENT
   const res_get = await fetch(`${url}/content`, {
