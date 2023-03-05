@@ -1,0 +1,142 @@
+openapi: '3.0.2'
+info:
+  title: User Database
+  version: '1.0'
+servers:
+  - url: https://data-service-7x5inv6roa-lz.a.run.app
+paths:
+  /login:
+    post:
+      summary: Database for the application
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                  email:
+                    type: string
+                  password: 
+                    type: string
+      responses:
+        '200':
+          description: An text object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    example: simone@sde.it
+                  token:
+                    type: string
+                    example: adjasgdashjg37t4273
+        '401':
+          description: Invalid token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: Unauthorized
+  /store:
+    post:
+      summary: store for the user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                content_text: 
+                  type: string
+                img_url: 
+                  type: string
+      responses:
+        '200':
+          description: An text object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title: 
+                    type: string
+                  content_text: 
+                    type: string
+                  img_url:
+                    type: string
+                  user:
+                    type: string
+                  created_at:
+                    type: string
+        '401':
+          description: Invalid token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: Unauthorized
+  /content:
+    post:
+      summary: store for the user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title: 
+                  type: string
+                content_text: 
+                  type: string
+                img_url:
+                  type: string
+      responses:
+        '200':
+          description: An text object.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title: 
+                    type: string
+                  content_text: 
+                    type: string
+                  img_url:
+                    type: string
+                  user:
+                    type: string
+                  created_at:
+                    type: string
+        '401':
+          description: Invalid token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  error:
+                    type: string
+                    example: Unauthorized
