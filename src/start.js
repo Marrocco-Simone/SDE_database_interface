@@ -19,6 +19,14 @@ app.use(cors({ origin: true }));
 app.use("/db", router);
 app.get("/", serverOnline);
 
+// * swagger endpoint
+const swaggerUi = require('swagger-ui-express');
+const fs = require("fs")
+const YAML = require('yaml')
+const file  = fs.readFileSync('./docs.yml', 'utf8')
+const swaggerDocument = YAML.parse(file)
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 app.use(pageNotFound);
 
 app.listen(port, async () => {
